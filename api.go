@@ -52,8 +52,8 @@ func main() {
 		log.Fatalf("Cannot parse duration Got: %v", err)
 	}
 
-	playground := types.Playground{Domain: config.PlaygroundDomain, DefaultDinDInstanceImage: "franela/dind", AvailableDinDInstanceImages: []string{"franela/dind"}, AllowWindowsInstances: config.NoWindows, DefaultSessionDuration: d, Extras: map[string]interface{}{"LoginRedirect": "http://localhost:3000"}, Privileged: true}
-	// playground := types.Playground{Domain: config.PlaygroundDomain, DefaultDinDInstanceImage: "franela/k8s", AvailableDinDInstanceImages: []string{"franela/k8s"}, AllowWindowsInstances: config.NoWindows, DefaultSessionDuration: d, Extras: map[string]interface{}{"LoginRedirect": "http://localhost:3000"}, Privileged: true}
+	// playground := types.Playground{Domain: config.PlaygroundDomain, DefaultDinDInstanceImage: "franela/dind", AvailableDinDInstanceImages: []string{"franela/dind"}, AllowWindowsInstances: config.NoWindows, DefaultSessionDuration: d, Extras: map[string]interface{}{"LoginRedirect": "http://localhost:3000"}, Privileged: true}
+	playground := types.Playground{Domain: config.PlaygroundDomain, DefaultDinDInstanceImage: "franela/k8s", AvailableDinDInstanceImages: []string{"franela/k8s"}, AllowWindowsInstances: config.NoWindows, DefaultSessionDuration: d, AssetsDir: "k8s", Extras: map[string]interface{}{"LoginRedirect": "http://localhost:3000"}, Privileged: true}
 	if _, err := core.PlaygroundNew(playground); err != nil {
 		log.Fatalf("Cannot create default playground. Got: %v", err)
 	}
